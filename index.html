@@ -1,79 +1,302 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-
   <head>
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="Curriculum : Curriculum for the ClojureBridge workshop series." />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Curriculum by ajuckel</title>
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-
-    <title>Curriculum</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
   </head>
-
   <body>
+    <div class="wrapper">
+      <header>
+        <h1>Curriculum</h1>
+        <p>Curriculum for the ClojureBridge workshop series.</p>
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/ajuckel/curriculum">View on GitHub</a>
+        <p class="view"><a href="https://github.com/ajuckel/curriculum">View the Project on GitHub <small>ajuckel/curriculum</small></a></p>
 
-          <h1 id="project_title">Curriculum</h1>
-          <h2 id="project_tagline">Curriculum for the ClojureBridge workshop series.</h2>
 
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/ajuckel/curriculum/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/ajuckel/curriculum/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
+        <ul>
+          <li><a href="https://github.com/ajuckel/curriculum/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/ajuckel/curriculum/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/ajuckel/curriculum">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a name="web-app-notes" class="anchor" href="#web-app-notes"><span class="octicon octicon-link"></span></a>Web App Notes</h1>
 
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+<h2>
+<a name="set-up-your-app" class="anchor" href="#set-up-your-app"><span class="octicon octicon-link"></span></a>Set up your app</h2>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
-
-<div class="highlight highlight-bash"><pre><span class="nv">$ </span><span class="nb">cd </span>your_repo_root/repo_name
-<span class="nv">$ </span>git fetch origin
-<span class="nv">$ </span>git checkout gh-pages
+<div class="highlight highlight-bash"><pre>lein new compojure chat
+<span class="nb">cd </span>chat
+lein ring server
 </pre></div>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+<p>This should create a directory structure that looks like this:</p>
 
-<h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
+<pre><code>| .gitignore
+| project.clj
+| resources
+| | public
+| README.md
+| target
+| src
+| | chat
+| | | handler.clj
+| test
+| | chat
+| | | test
+| | | | handler.clj
+</code></pre>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+<p>There's nothing inherently special or Clojure-y about this project skeleton. It's just a convention used by Leiningen. You'll be using Leiningen to build and run Clojure apps, and Leiningen expects your app to be laid out this way. Here's the function of each part of the skeleton:</p>
 
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
+<ul>
+<li>
+<code>project.clj</code> is a configuration file for Leiningen. It helps
+Leiningen answer questions like, "What dependencies does this
+project have?" and "When this Clojure program runs, what function
+should get executed first?"</li>
+<li>
+<code>src/chat/handler.clj</code> is where we'll be doing our
+Clojure coding for awhile.</li>
+<li>The <code>test</code> directory contains tests, which we won't be covering.</li>
+<li>
+<code>resources</code> is a place for you to store assets like images; we won't
+be using it today.</li>
+</ul><p>Now let's go ahead and actually run this project. Enter this at the command line:</p>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+<h2>
+<a name="say-hello-to-yourself" class="anchor" href="#say-hello-to-yourself"><span class="octicon octicon-link"></span></a>Say hello to yourself</h2>
 
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+<p>Open up your Chat application in LightTable. In LightTable open <code>chat/src/chat.handler.clj</code>.</p>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+<p>Change the <code>(GET "/" ...</code> line to say hello to yourself</p>
 
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+<div class="highlight highlight-clojure"><pre>  <span class="p">(</span><span class="nf">GET</span> <span class="s">"/"</span> <span class="p">[]</span> <span class="s">"Hello YourName!"</span><span class="p">)</span>
+</pre></div>
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+<p>View your page at <a href="http://localhost:3000/">http://localhost:3000/</a>.</p>
+
+<p><a href="https://github.com/clojurebridge-minneapolis/chat/commit/68695029d7933fc0272b4cd5d541ff9473db340b">commit</a></p>
+
+<h2>
+<a name="write-some-html-with-hiccup" class="anchor" href="#write-some-html-with-hiccup"><span class="octicon octicon-link"></span></a>Write some html with Hiccup</h2>
+
+<p>Under the <code>(GET "/" ...</code> line, add a new route like this:</p>
+
+<div class="highlight highlight-clojure"><pre>  <span class="p">(</span><span class="nf">GET</span> <span class="s">"/hello2"</span> <span class="p">[]</span> <span class="p">(</span><span class="nf">page/html5</span> <span class="p">[</span><span class="ss">:div</span> <span class="s">"Hello from "</span> <span class="p">[</span><span class="ss">:b</span> <span class="s">"hiccup"</span><span class="p">]</span> <span class="s">"!"</span><span class="p">]))</span>
+</pre></div>
+
+<p>If you save the file, you'll get an error in your console because Clojure doesn't know what Hiccup is yet. We'll need to add hiccup to our <code>project.clj</code> file and require it in <code>src/chat/handler.clj</code>.</p>
+
+<div class="highlight highlight-clojure"><pre><span class="c1">; add this to the ```:dependencies``` section of project.clj</span>
+<span class="p">[</span><span class="nv">hiccup</span> <span class="s">"1.0.5"</span><span class="p">]</span>
+</pre></div>
+
+<p>Because we've changed our <code>project.clj</code> file, you'll need to restart your server (press <code>ctrl-c</code> to stop it and then run the same command you ran before to start it again)</p>
+
+<div class="highlight highlight-clojure"><pre><span class="c1">; add this to the ```:require``` section at the top of handler.clj</span>
+<span class="p">[</span><span class="nv">hiccup.page</span> <span class="ss">:as</span> <span class="nv">page</span><span class="p">]</span>
+</pre></div>
+
+<p><img src="img/project_hiccup_dependencies.png" alt="diff"><img src="img/handler_require.png" alt="diff"></p>
+
+<p>View your page at http://localhost:3000/hello2</p>
+
+<p><a href="https://github.com/clojurebridge-minneapolis/chat/commit/a5eb7cb2c6753cda053c716bc740fe6fdce5f9de">commit</a></p>
+
+<h2>
+<a name="add-a-form" class="anchor" href="#add-a-form"><span class="octicon octicon-link"></span></a>Add a form</h2>
+
+<p>Add a new item in <code>:require</code></p>
+
+<div class="highlight highlight-clojure"><pre><span class="p">[</span><span class="nv">hiccup.form</span> <span class="ss">:as</span> <span class="nv">form</span><span class="p">]</span>
+</pre></div>
+
+<p>Add a new route for rendering a form that calls a function to make the page</p>
+
+<div class="highlight highlight-clojure"><pre><span class="c1">; add a function (Note: this must be before the defroutes section</span>
+<span class="p">(</span><span class="kd">defn </span><span class="nv">who</span> <span class="p">[]</span>
+  <span class="p">(</span><span class="nf">page/html5</span>
+    <span class="p">(</span><span class="nf">form/form-to</span> <span class="p">[</span><span class="ss">:post</span> <span class="s">"/iam"</span><span class="p">]</span>
+                  <span class="p">[</span><span class="ss">:label</span> <span class="s">"Who are you?"</span><span class="p">]</span>
+                  <span class="p">(</span><span class="nf">form/text-field</span> <span class="s">"name"</span><span class="p">)</span>
+                  <span class="p">(</span><span class="nf">form/submit-button</span> <span class="s">"Submit"</span><span class="p">))))</span>
+
+<span class="c1">; add a route to the defroutes section</span>
+<span class="p">(</span><span class="nf">GET</span> <span class="s">"/who"</span> <span class="p">[]</span> <span class="p">(</span><span class="nf">who</span><span class="p">))</span>
+</pre></div>
+
+<p>View your page at http://localhost:3000/who. If you submit the form, you'll get an error, so we need to handle the post like this:</p>
+
+<div class="highlight highlight-clojure"><pre><span class="c1">; make a function to display our response</span>
+<span class="p">(</span><span class="kd">defn </span><span class="nv">iam</span> <span class="p">[</span><span class="nv">params</span><span class="p">]</span>
+  <span class="p">(</span><span class="nf">page/html5</span>
+    <span class="p">[</span><span class="ss">:div</span> <span class="s">"You are "</span> <span class="p">(</span><span class="ss">:name</span> <span class="nv">params</span><span class="p">)</span> <span class="s">"!"</span><span class="p">]))</span>
+
+<span class="c1">; add a route to handle the request</span>
+<span class="p">(</span><span class="nf">POST</span> <span class="s">"/iam"</span> <span class="p">{</span><span class="nv">params</span> <span class="ss">:params</span><span class="p">}</span> <span class="p">(</span><span class="nf">iam</span> <span class="nv">params</span><span class="p">))</span>
+</pre></div>
+
+<p><a href="https://github.com/clojurebridge-minneapolis/chat/commit/fda95cd021e832f8230d7eded8240488fb80d89f">commit</a></p>
+
+<h2>
+<a name="add-some-flow-control" class="anchor" href="#add-some-flow-control"><span class="octicon octicon-link"></span></a>Add some flow control</h2>
+
+<div class="highlight highlight-clojure"><pre><span class="c1">; change the iam function to look like this</span>
+<span class="p">(</span><span class="kd">defn </span><span class="nv">iam</span> <span class="p">[</span><span class="nv">params</span><span class="p">]</span>
+  <span class="p">(</span><span class="nf">page/html5</span>
+    <span class="p">[</span><span class="ss">:div</span> <span class="s">"You are "</span> <span class="p">(</span><span class="ss">:name</span> <span class="nv">params</span><span class="p">)</span> <span class="s">"!"</span>
+     <span class="p">[</span><span class="ss">:ul</span>
+      <span class="p">[</span><span class="ss">:li</span> <span class="s">"Your name is "</span> <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nf">odd?</span> <span class="p">(</span><span class="nb">count </span><span class="p">(</span><span class="ss">:name</span> <span class="nv">params</span><span class="p">)))</span>
+                             <span class="s">"odd"</span>
+                             <span class="s">"even"</span><span class="p">)]</span>
+      <span class="p">(</span><span class="nb">when </span><span class="p">(</span><span class="nb">&gt; </span><span class="p">(</span><span class="nb">count </span><span class="p">(</span><span class="ss">:name</span> <span class="nv">params</span><span class="p">))</span> <span class="mi">7</span><span class="p">)</span>
+          <span class="p">[</span><span class="ss">:li</span> <span class="s">"You should consider a nickname."</span><span class="p">])]]))</span>
+</pre></div>
+
+<p><a href="https://github.com/clojurebridge-minneapolis/chat/commit/705227c000454f18c0f1ac7bba79bcf7f71e627a">commit</a></p>
+
+<h2>
+<a name="simplify-things-with-let" class="anchor" href="#simplify-things-with-let"><span class="octicon octicon-link"></span></a>Simplify things with <code>let</code>
+</h2>
+
+<p>That's nice, but we've written <code>(:name params)</code> a lot. Change the function to use a <code>var</code>:</p>
+
+<div class="highlight highlight-clojure"><pre><span class="c1">; change the iam function to look like this</span>
+<span class="p">(</span><span class="kd">defn </span><span class="nv">iam</span> <span class="p">[</span><span class="nv">params</span><span class="p">]</span>
+  <span class="p">(</span><span class="nf">page/html5</span>
+    <span class="p">(</span><span class="k">let </span><span class="p">[</span><span class="nb">name </span><span class="p">(</span><span class="ss">:name</span> <span class="nv">params</span><span class="p">)]</span>
+      <span class="p">[</span><span class="ss">:div</span> <span class="s">"You are "</span> <span class="nb">name </span><span class="s">"!"</span>
+       <span class="p">[</span><span class="ss">:ul</span>
+        <span class="p">[</span><span class="ss">:li</span> <span class="s">"Your name is "</span> <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nf">odd?</span> <span class="p">(</span><span class="nb">count </span><span class="nv">name</span><span class="p">))</span>
+                               <span class="s">"odd"</span>
+                               <span class="s">"even"</span><span class="p">)]</span>
+        <span class="p">(</span><span class="nb">when </span><span class="p">(</span><span class="nb">&gt; </span><span class="p">(</span><span class="nb">count </span><span class="nv">name</span><span class="p">)</span> <span class="mi">7</span><span class="p">)</span>
+            <span class="p">[</span><span class="ss">:li</span> <span class="s">"You should consider a nickname."</span><span class="p">])]])))</span>
+</pre></div>
+
+<p><a href="https://github.com/clojurebridge-minneapolis/chat/commit/4bf28482e4b6c72bba1c6b635a1e30b2fd9f9879">commit</a></p>
+
+<h2>
+<a name="maps" class="anchor" href="#maps"><span class="octicon octicon-link"></span></a>Maps</h2>
+
+<p>We can look at our params map by printing it out. Change the <code>iam</code> function to this:</p>
+
+<div class="highlight highlight-clojure"><pre><span class="c1">; change the iam function to look like this</span>
+<span class="p">(</span><span class="kd">defn </span><span class="nv">iam</span> <span class="p">[</span><span class="nv">params</span><span class="p">]</span>
+  <span class="p">(</span><span class="nf">page/html5</span>
+    <span class="p">(</span><span class="k">let </span><span class="p">[</span><span class="nb">name </span><span class="p">(</span><span class="ss">:name</span> <span class="nv">params</span><span class="p">)]</span>
+      <span class="p">[</span><span class="ss">:div</span> <span class="s">"You are "</span> <span class="nb">name </span><span class="s">"!"</span>
+       <span class="p">[</span><span class="ss">:ul</span>
+        <span class="p">[</span><span class="ss">:li</span> <span class="p">(</span><span class="nb">str </span><span class="nv">params</span><span class="p">)]</span>
+        <span class="p">[</span><span class="ss">:li</span> <span class="s">"Your name is "</span> <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nf">odd?</span> <span class="p">(</span><span class="nb">count </span><span class="nv">name</span><span class="p">))</span>
+                               <span class="s">"odd"</span>
+                               <span class="s">"even"</span><span class="p">)]</span>
+        <span class="p">(</span><span class="nb">when </span><span class="p">(</span><span class="nb">&gt; </span><span class="p">(</span><span class="nb">count </span><span class="nv">name</span><span class="p">)</span> <span class="mi">7</span><span class="p">)</span>
+            <span class="p">[</span><span class="ss">:li</span> <span class="s">"You should consider a nickname."</span><span class="p">])]])))</span>
+</pre></div>
+
+<p><a href="https://github.com/clojurebridge-minneapolis/chat/commit/9dcfa8cf5577c6fa65d7f8141d7788a5e56d1add">commit</a></p>
+
+<h2>
+<a name="post-a-name-and-message" class="anchor" href="#post-a-name-and-message"><span class="octicon octicon-link"></span></a>Post a name and message</h2>
+
+<div class="highlight highlight-clojure"><pre><span class="c1">; change our default route to this (be sure to not leave the old version around - it will cause problems)</span>
+<span class="p">(</span><span class="nf">ANY</span> <span class="s">"/"</span> <span class="p">{</span><span class="nv">params</span> <span class="ss">:params</span><span class="p">}</span> <span class="p">(</span><span class="nf">chat</span> <span class="p">(</span><span class="ss">:name</span> <span class="nv">params</span><span class="p">)</span> <span class="p">(</span><span class="ss">:msg</span> <span class="nv">params</span><span class="p">)))</span>
+
+<span class="c1">; add a chat function</span>
+<span class="p">(</span><span class="kd">defn </span><span class="nv">chat</span> <span class="p">[</span><span class="nb">name </span><span class="nv">msg</span><span class="p">]</span>
+  <span class="p">(</span><span class="nf">page/html5</span>
+   <span class="p">(</span><span class="nf">form/form-to</span>
+    <span class="p">[</span><span class="ss">:post</span> <span class="s">"/"</span><span class="p">]</span>
+    <span class="p">[</span><span class="ss">:div</span> <span class="s">"Name:"</span> <span class="p">(</span><span class="nf">form/text-field</span> <span class="s">"name"</span> <span class="nv">name</span><span class="p">)</span> <span class="s">" Message:"</span> <span class="p">(</span><span class="nf">form/text-field</span> <span class="s">"msg"</span><span class="p">)]</span>
+    <span class="p">(</span><span class="nf">form/submit-button</span> <span class="s">"Submit"</span><span class="p">))))</span>
+</pre></div>
+
+<p>View your app and submit a name and a message. Notice that the name is still there when you
+submit the page.</p>
+
+<p><a href="https://github.com/clojurebridge-minneapolis/chat/commit/0af9ad31c50d8bd8552df759ec6dfdba35b7dbb7">commit</a></p>
+
+<h2>
+<a name="store-and-display-messages" class="anchor" href="#store-and-display-messages"><span class="octicon octicon-link"></span></a>Store and display messages</h2>
+
+<p>First, add an atom so we can store our messages somewhere.</p>
+
+<div class="highlight highlight-clojure"><pre><span class="c1">; above the chat function</span>
+<span class="p">(</span><span class="k">def </span><span class="nv">messages</span> <span class="p">(</span><span class="nf">atom</span> <span class="p">[]))</span>
+</pre></div>
+
+<p>Next, update our messages atom and print them out</p>
+
+<div class="highlight highlight-clojure"><pre><span class="p">(</span><span class="kd">defn </span><span class="nv">chat</span> <span class="p">[</span><span class="nb">name </span><span class="nv">msg</span><span class="p">]</span>
+  <span class="p">(</span><span class="nb">when-not </span><span class="p">(</span><span class="nf">empty?</span> <span class="nv">msg</span><span class="p">)</span>
+    <span class="p">(</span><span class="nf">swap!</span> <span class="nv">messages</span> <span class="nb">conj </span><span class="p">[</span><span class="nb">name </span><span class="nv">msg</span><span class="p">]))</span>
+  <span class="p">(</span><span class="nf">page/html5</span>
+    <span class="p">(</span><span class="nb">map </span><span class="p">(</span><span class="k">fn </span><span class="p">[</span><span class="nv">message</span><span class="p">]</span> <span class="p">[</span><span class="ss">:div</span> <span class="p">[</span><span class="ss">:strong</span> <span class="p">(</span><span class="nb">first </span><span class="nv">message</span><span class="p">)]</span> <span class="s">" "</span> <span class="p">(</span><span class="nb">second </span><span class="nv">message</span><span class="p">)])</span> <span class="o">@</span><span class="nv">messages</span><span class="p">)</span>
+    <span class="p">(</span><span class="nf">form/form-to</span>
+      <span class="c1">; leave the rest of the function the same as it was..</span>
+</pre></div>
+
+<p>Try using your app to chat with someone</p>
+
+<p><a href="https://github.com/clojurebridge-minneapolis/chat/commit/7350384b5f97dc618a4e81a175e8bfaf12c629e1">commit</a></p>
+
+<h2>
+<a name="make-it-pretty-by-adding-bootstrap" class="anchor" href="#make-it-pretty-by-adding-bootstrap"><span class="octicon octicon-link"></span></a>Make it pretty by adding Bootstrap</h2>
+
+<p>Add Bootstrap to our project by adding this dependency in your <code>project.clj</code> file:</p>
+
+<div class="highlight highlight-clojure"><pre><span class="p">[</span><span class="nv">hiccup-bootstrap</span> <span class="s">"0.1.2"</span><span class="p">]</span>
+</pre></div>
+
+<p>Don't forget to restart your server after making a change to <code>project.clj</code>.</p>
+
+<p>Add some code to make Bootstrap work in your <code>src/chat/handler.clj</code> file:</p>
+
+<div class="highlight highlight-clojure"><pre><span class="c1">; Add these two lines to use Bootstrap middleware. Put them at the top after the hiccup.form line:</span>
+<span class="p">[</span><span class="nv">hiccup.bootstrap.middleware</span> <span class="ss">:as</span> <span class="nv">middleware</span><span class="p">]</span>
+<span class="p">[</span><span class="nv">hiccup.bootstrap.page</span> <span class="ss">:as</span> <span class="nv">boot</span><span class="p">]</span>
+
+<span class="c1">; modify our chat function to use Bootstrap</span>
+<span class="p">(</span><span class="kd">defn </span><span class="nv">chat</span> <span class="p">[</span><span class="nb">name </span><span class="nv">msg</span><span class="p">]</span>
+  <span class="p">(</span><span class="nb">when-not </span><span class="p">(</span><span class="nf">empty?</span> <span class="nv">msg</span><span class="p">)</span>
+    <span class="p">(</span><span class="nf">swap!</span> <span class="nv">messages</span> <span class="nb">conj </span><span class="p">[</span><span class="nb">name </span><span class="nv">msg</span><span class="p">]))</span>
+  <span class="p">(</span><span class="nf">page/html5</span>
+   <span class="p">[</span><span class="ss">:head</span>                         <span class="c1">;added</span>
+    <span class="p">[</span><span class="ss">:title</span> <span class="s">"Chat"</span><span class="p">]</span>                         <span class="c1">;added</span>
+    <span class="p">(</span><span class="nf">boot/include-bootstrap</span><span class="p">)]</span>               <span class="c1">;added</span>
+   <span class="p">[</span><span class="ss">:body</span>                                   <span class="c1">;added</span>
+     <span class="p">[</span><span class="ss">:h1</span> <span class="s">"Chat"</span><span class="p">]</span>                           <span class="c1">;added</span>
+     <span class="p">[</span><span class="ss">:div.well</span>
+      <span class="p">(</span><span class="nb">map </span><span class="p">(</span><span class="k">fn </span><span class="p">[</span><span class="nv">message</span><span class="p">]</span> <span class="p">[</span><span class="ss">:div</span> <span class="p">[</span><span class="ss">:strong</span> <span class="p">(</span><span class="nb">first </span><span class="nv">message</span><span class="p">)]</span> <span class="s">" "</span> <span class="p">(</span><span class="nb">second </span><span class="nv">message</span><span class="p">)])</span> <span class="o">@</span><span class="nv">messages</span><span class="p">)]</span>
+     <span class="p">(</span><span class="nf">form/form-to</span>
+      <span class="p">[</span><span class="ss">:post</span> <span class="s">"/"</span><span class="p">]</span>
+      <span class="p">[</span><span class="ss">:div</span> <span class="s">"Name:"</span> <span class="p">(</span><span class="nf">form/text-field</span> <span class="s">"name"</span> <span class="nv">name</span><span class="p">)</span> <span class="s">" Message:"</span> <span class="p">(</span><span class="nf">form/text-field</span> <span class="s">"msg"</span><span class="p">)]</span>
+      <span class="p">(</span><span class="nf">form/submit-button</span> <span class="s">"Submit"</span><span class="p">))]))</span>     <span class="c1">;changed</span>
+
+<span class="c1">; add the Bootstrap specific routes by wrapping our routes with them</span>
+<span class="p">(</span><span class="k">def </span><span class="nv">app</span>
+  <span class="p">(</span><span class="nf">handler/site</span> <span class="p">(</span><span class="nf">middleware/wrap-bootstrap-resources</span> <span class="nv">app-routes</span><span class="p">)))</span>
+</pre></div>
+
+<p><a href="https://github.com/clojurebridge-minneapolis/chat/commit/a518836ff9b7e0016d006051fd88dd707ffcdbe7">commit</a></p>
       </section>
-    </div>
-
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Curriculum maintained by <a href="https://github.com/ajuckel">ajuckel</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/ajuckel">ajuckel</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
       </footer>
     </div>
-
+    <script src="javascripts/scale.fix.js"></script>
     
-
   </body>
 </html>
