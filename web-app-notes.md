@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: themed
 title: Web App Notes
 ---
 
@@ -51,11 +51,12 @@ Now let's go ahead and actually run this project. Enter this at the command line
 Open up your Chat application in LightTable. In LightTable open ```chat/src/chat.handler.clj```.
 
 Change the ```(GET "/" ...``` line to say hello to yourself
+
 ```clojure
   (GET "/" [] "Hello YourName!")
 ```
 
-View your page at http://localhost:3000/
+View your page at <a href="http://localhost:3000/">http://localhost:3000/</a>.
 
 [commit](https://github.com/clojurebridge-minneapolis/chat/commit/68695029d7933fc0272b4cd5d541ff9473db340b)
 
@@ -63,11 +64,13 @@ View your page at http://localhost:3000/
 ## Write some html with Hiccup
 
 Under the ```(GET "/" ...``` line, add a new route like this:
+
 ```clojure
   (GET "/hello2" [] (page/html5 [:div "Hello from " [:b "hiccup"] "!"]))
 ```
 
 If you save the file, you'll get an error in your console because Clojure doesn't know what Hiccup is yet. We'll need to add hiccup to our ```project.clj``` file and require it in ```src/chat/handler.clj```.
+
 ```clojure
 ; add this to the ```:dependencies``` section of project.clj
 [hiccup "1.0.5"]
@@ -89,11 +92,13 @@ View your page at http://localhost:3000/hello2
 ## Add a form
 
 Add a new item in ```:require```
+
 ```clojure
 [hiccup.form :as form]
 ```
 
 Add a new route for rendering a form that calls a function to make the page
+
 ```clojure
 ; add a function (Note: this must be before the defroutes section
 (defn who []
@@ -108,6 +113,7 @@ Add a new route for rendering a form that calls a function to make the page
 ```
 
 View your page at http://localhost:3000/who. If you submit the form, you'll get an error, so we need to handle the post like this:
+
 ```clojure
 ; make a function to display our response
 (defn iam [params]
@@ -142,6 +148,7 @@ View your page at http://localhost:3000/who. If you submit the form, you'll get 
 ## Simplify things with ```let```
 
 That's nice, but we've written ```(:name params)``` a lot. Change the function to use a ```var```:
+
 ```clojure
 ; change the iam function to look like this
 (defn iam [params]
@@ -162,6 +169,7 @@ That's nice, but we've written ```(:name params)``` a lot. Change the function t
 ## Maps
 
 We can look at our params map by printing it out. Change the ```iam``` function to this:
+
 ```clojure
 ; change the iam function to look like this
 (defn iam [params]
@@ -204,12 +212,14 @@ submit the page.
 ## Store and display messages
 
 First, add an atom so we can store our messages somewhere.
+
 ```clojure
 ; above the chat function
 (def messages (atom []))
 ```
 
 Next, update our messages atom and print them out
+
 ```clojure
 (defn chat [name msg]
   (when-not (empty? msg)
@@ -228,12 +238,14 @@ Try using your app to chat with someone
 ## Make it pretty by adding Bootstrap
 
 Add Bootstrap to our project by adding this dependency in your ```project.clj``` file:
+
 ```clojure
 [hiccup-bootstrap "0.1.2"]
 ```
 Don't forget to restart your server after making a change to ```project.clj```.
 
 Add some code to make Bootstrap work in your ```src/chat/handler.clj``` file:
+
 ```clojure
 ; Add these two lines to use Bootstrap middleware. Put them at the top after the hiccup.form line:
 [hiccup.bootstrap.middleware :as middleware]
